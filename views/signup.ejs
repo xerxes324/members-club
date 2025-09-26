@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+    <div class="signup">
+        <h1> Sign Up </h1>
+        <form method="post" action="/signup"  class="signupform" >
+            <h3> First Name </h3>
+            <input value="<%= data && data.firstname ? data.firstname : '' %>" type="text" name="firstname" required placeholder="John" />
+            <h3> Last Name </h3>
+            <input value="<%= data && data.lastname ? data.lastname : '' %>" type="text" name="lastname" required placeholder="Connor"/>
+            <h3> Email Address </h3>
+            <input value="<%= data && data.email ? data.email : ''%>" type="email" name="email" required placeholder="johnconnor@gmail.com" />
+            <h3> Password </h3>
+            <input value="<%= data && data.pwd ? data.pwd : '' %>" type="password" name="pwd" required/>
+            
+            <h3> Confirm Password </h3>
+            <input value="<%= data && data.confirmpwd ? data.confirmpwd : '' %>" type="password" name="confirmpwd" required />
+
+            <h3> Membership Password ( optional ) </h3>
+            <input type="password" name="memberpwd"/>
+            <button type="submit"> Sign up </button>
+            
+            <% if(errors && Array.isArray(errors)){ %>
+                <div class="errorDiv">
+                     <img class="exclamation" src="/assets/exclamation.svg" />
+                     <p> <%= errors[0].msg %></p>
+                </div>
+            <%}%>
+
+            <% if ( errors && typeof(errors) === 'string'){%>
+                <div class="errorDiv">
+                     <img class="exclamation" src="/assets/exclamation.svg" />
+                     <p> <%= errors %></p>
+                </div>                
+            <%}%>
+        </form>
+    </div>
+
+    <!-- <p> Already a member ? Click <a href="/membership" >here</a></p> -->
+    <p>Click <a href="/login" >here</a> to login</p>
+</body>
+</html>
