@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/dashboardStyle.css">
+</head>
+<body>
+    
+    <div class="header">
+        <h2> Welcome <%= user.firstname %> </h2>
+        <button class="logout" onclick="window.location.href= '/logout' " > Logout </button>
+
+        <% if( user.is_admin === false ){ %>
+
+            <%if( user.membership === 'Member'){%>
+                <h2> Click <a href="/clubadmin"> here</a> to login as admin</h2>    
+            <%}%>
+            
+        <% } else{ %>
+            <div class="memberCheck" >
+                <img src="/assets/check.svg" class="check">
+                <h2> Admin </h2>    
+            </div>
+            
+        <% } %>
+
+        <% if( user.membership === 'Member'){ %>
+            <div class="memberCheck" >
+                <img src="/assets/check.svg" class="check">
+                <h2> Member </h2>
+            </div>
+            
+        <% } else { %>
+            <h2> <a href="/signup"> Sign up as member</a> </h2>
+            <% } %>
+    </div>
+
+    <div class="newMessageDiv" >
+        <button id="newMessage" onclick="generateForm()" >New Message +</button>
+    </div>
+
+    <div class="content">    
+        <% user.data.forEach((value) => { %>
+            <div class="messages">
+                <h1> <%= value.title %> </h1>
+                <h3> <%= value.content %> </h3>
+
+                <% if(user.membership === 'Member'){ %>
+
+                    <%user.names.forEach((element)=>{%>
+                        <%if (element.user_id === value.user_id){%>
+                            <div class="headerfour" >
+                                <h4> - <%= element.firstname + " " + element.lastname %> </h3>
+                                <h4> <%= value.created_at.toLocaleString() %></h3>
+                            </div>
+
+                       <% }%>
+                    <%})%>
+                <%}%>
+
+                <%if ( user.is_admin === true){%>
+                    <form action="/deleteMessage" method="post" >
+                        <button name="buttonid" value="<%= value.id%>" class="deleteBtn"> Delete </button>
+                    </form>
+                <%}%>
+            </div>
+        <%})%>
+        
+        <div id="overlay"></div>
+            <form id="messageForm" class="hidden" method="post" action="/dashboard">
+                <p> Title </p>
+                <input type="text" name="title"/>
+                <p> Content </p>
+                <textarea name="content" rows="5" cols="40"> Enter your text</textarea>
+                <button type="submit"> Submit </button>
+            </form>
+    </div>
+
+    <div class="footer">
+          <p>© 2025 -Built with Node.js & Express</p>
+    </div>
+
+
+    <script>
+        const overlay = document.getElementById('overlay');
+        const toggleForm = document.getElementById("messageForm");
+        const newmsgbtn = document.getElementById('newMessage')
+
+        newmsgbtn.addEventListener("click", ()=>{
+
+            toggleForm.classList.toggle("hidden");
+            toggleForm.classList.toggle('visible');
+            overlay.classList.toggle('overlayOpacity');
+        })
+    
+    </script>
+<!--  INSTEAD JUST CREATE A DIV INSIDE ITSELF WITH CSS AND DISPLAY : NONE -->
+    <!-- <script>
+
+    const generateForm = () => {
+        const container = document.createElement("div");
+        container.classList.add("modalContainer");
+        const closebutton = document.createElement("button");
+        closebutton.innerHTML = "X"
+        closebutton.classList.add("closebutton");
+
+        closebutton.addEventListener("click", ()=>{
+            container.style.display = 'none';
+        })
+
+        const modal = document.createElement("div");
+        const titlelabel = document.createElement('p');
+        titlelabel.textContent = "Title:"
+        const title = document.createElement("input");
+        modal.append(titlelabel, title,closebutton);
+        container.append(modal);
+        document.body.append(container);
+    };
+    </script> -->
+</body>
+</html>
