@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> Welcome <%= user.firstname + user.lastname %> </h1>
+    <form method="post" action="/clubadmin">
+        <div>
+            <label> Admin password </label>
+            <input type="password" name="adminpassword"/>
+            <button type="submit"> Submit </button>
+        </div>
+
+        <p> <a href="/dashboard" > Dashboard </a></p>
+    </form>
+
+</body>
+</html>
