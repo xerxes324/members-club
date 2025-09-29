@@ -6,9 +6,6 @@ const seed = require('./seedSecrets');
 require("dotenv").config();
 const db = require("./db/queries");
 const passport = require('passport');
-// app.get("/{*splat}", (req,res)=>{
-//     res.send("HELLO GO AWAY");
-// })
 
 app.set("view engine", "ejs");
 app.use(express.json());
