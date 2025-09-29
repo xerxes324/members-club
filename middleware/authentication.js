@@ -1,6 +1,6 @@
-const db = require("../db/queries");
 const bcrypt = require("bcryptjs");
 const {body, validationResult} = require('express-validator');
+const pool = require("../db/pool");
 
 exports.initialize = (req,res,next) => {
     const errors = validationResult(req);
@@ -65,3 +65,45 @@ exports.passwordMatch = [
         return true;
     })
 ]
+
+exports.checkAdminPwd = async(req,res,next) => {
+    const {rows} = await pool.query("SELECT code_hash from secretcodes where code_type = 'admin'");
+    const check = await bcrypt.compare(req.body.adminpassword, rows[0].code_hash);
+
+    try{
+        if ( check ) { //passcodes match 
+            console.log('req.user is :', req.user);
+            req.user.is_admin = true;
+            console.log("REQ.USER NOW IS : ", req.user);
+            //update database : 
+            await pool.query(`UPDATE users
+                set is_admin = $1
+                where username = $2
+                `, [ true, req.user.username ])
+            res.redirect("/dashboard");
+        };
+    }
+
+    catch(err){
+        next(err);
+    }
+}
+
+exports.isAdmin = (req,res,next) => {
+
+    console.log(req.user, 'is the admincheck user');
+    if ( req.user.is_admin === true){
+        res.redirect("/dashboard")
+    }
+
+}
+
+exports.isLoggedin = async(req,res,next) => {
+
+    if ( req.user ){
+        res.redirect("/dashboard");
+    }
+    else{
+        next();
+    }
+}
