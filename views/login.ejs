@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="/css/loginStyle.css"/>
+</head>
+<body>
+    <div class = "login">
+        <h1> Login </h1>
+        <form class="loginform" method="post" action="/login">
+            <h3> Email </h3>
+            <input type="text" name = "username" required/>
+            <h3> Password </h3>
+            <input type="password" name = "password" required/>
+            <button type="submit"> Login </button>
+        </form>
+
+        <% if (error && typeof(error) === 'string'){ %>
+            <div class="loginErrorDiv" >
+                <img class="exclamation" src="/assets/exclamation.svg" />
+                <p> <%= error %> </p>
+            </div>
+
+        <% }%>
+    </div>
+
+    <p> Not a member ? Click <a href="/signup" >here</a> to sign up</p>
+</body>
+</html>
