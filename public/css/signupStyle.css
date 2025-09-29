@@ -1,0 +1,101 @@
+/* signupStyle.css (Dark Background Version) */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #121212; /* dark background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: #e0e0e0;
+  flex-direction: column;
+}
+
+.signup {
+  background: #1e1e1e; /* dark card */
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+  width: 350px;
+}
+
+.signup h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+}
+
+.signupform h3 {
+  margin: 0.5rem 0 0.3rem;
+  color: #bbbbbb;
+  font-size: 0.95rem;
+}
+
+.signupform input {
+  width: 100%;
+  padding: 0.6rem;
+  margin-bottom: 1rem;
+  border: 1px solid #333;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  background: #2a2a2a;
+  color: #f5f5f5;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.signupform input:focus {
+  border-color: #007bff;
+}
+
+.signupform button {
+  width: 100%;
+  padding: 0.7rem;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.signupform button:hover {
+  background: #0056b3;
+}
+
+.errorDiv {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #3b1f1f;
+  color: #ff9999;
+  padding: 0.6rem;
+  border-radius: 8px;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.errorDiv img.exclamation {
+  width: 20px;
+  height: 20px;
+  filter: invert(70%) sepia(50%) saturate(500%);
+}
+
+p {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #bbbbbb;
+}
+
+p a {
+  color: #4da6ff;
+  text-decoration: none;
+}
+
+p a:hover {
+  text-decoration: underline;
+}
