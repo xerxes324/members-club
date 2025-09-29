@@ -3,16 +3,29 @@ exports.home = async(req,res) => {
 }
 
 exports.login = async(req,res) => {
-    res.render("login");
+    res.render("login", {error: ""});
 }
 
 exports.signup = async(req,res) =>{
-    res.render("signup", {errors: [], data:[], dberror:null});
+    res.render("signup", {errors: [], data:[]});
 }
 
 
 exports.dashboard = async(req,res) => {
-    // const {firstname, lastname, email, pwd, memberpwd} = req.body;
-    const userData = req.body;
-    res.render("dashboard", {userData});
+    const userData = req.user;
+    console.log("messages data is", userData);
+    res.render("dashboard", {user : userData});
+}
+
+exports.clubadmin = async(req,res,next) => {
+    res.render("clubadmin", {user: req.user});
+}
+
+exports.fallback = async(req,res,next) => {
+    if ( req.user ){
+        res.redirect("/dashboard");
+    }
+    else{
+        res.render("fallbackPage"); 
+    }
 }
