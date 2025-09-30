@@ -1,0 +1,80 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #121212; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: #e0e0e0;
+  flex-direction: column;
+}
+
+.clubAdmin {
+  background: #1e1e1e;
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+  width: 320px;
+  text-align: center;
+}
+
+.clubAdmin h1 {
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+}
+
+.clubAdmin form label {
+  display: block;
+  margin-bottom: 0.3rem;
+  color: #bbbbbb;
+  font-size: 0.95rem;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.clubAdmin form input[type="password"]{
+  width: 100%;
+  padding: 0.6rem;
+  margin-bottom: 1rem;
+  border: 1px solid #333;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  background: #2a2a2a;
+  color: #f5f5f5;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+
+.clubAdmin form button {
+  width: 40%;
+  padding: 0.7rem;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.clubAdmin form button:hover {
+  background: #0056b3;
+}
+
+.clubAdmin p {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #bbbbbb;
+}
+
+.clubAdmin p a {
+  color: #4da6ff;
+  text-decoration: none;
+}
+
+.clubAdmin p a:hover {
+  text-decoration: underline;
+}
