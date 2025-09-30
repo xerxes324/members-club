@@ -44,8 +44,8 @@
     <div class="content">    
         <% user.data.forEach((value) => { %>
             <div class="messages">
-                <h1> <%= value.title %> </h1>
-                <h3> <%= value.content %> </h3>
+                <h2> <%= value.title %> </h2>
+                <h4> <%= value.content %> </h4>
 
                 <% if(user.membership === 'Member'){ %>
 
@@ -68,18 +68,17 @@
             </div>
         <%})%>
         
-        <div id="overlay"></div>
             <form id="messageForm" class="hidden" method="post" action="/dashboard">
                 <p> Title </p>
-                <input type="text" name="title"/>
+                <input type="text" name="title" placeholder="Title" />
                 <p> Content </p>
-                <textarea name="content" rows="5" cols="40"> Enter your text</textarea>
+                <textarea name="content" rows="5" cols="40"></textarea>
                 <button type="submit"> Submit </button>
             </form>
     </div>
 
     <div class="footer">
-          <p>© 2025 -Built with Node.js & Express</p>
+          <p>© 2025 -Built with node.js & express</p>
     </div>
 
 
@@ -96,28 +95,5 @@
         })
     
     </script>
-<!--  INSTEAD JUST CREATE A DIV INSIDE ITSELF WITH CSS AND DISPLAY : NONE -->
-    <!-- <script>
-
-    const generateForm = () => {
-        const container = document.createElement("div");
-        container.classList.add("modalContainer");
-        const closebutton = document.createElement("button");
-        closebutton.innerHTML = "X"
-        closebutton.classList.add("closebutton");
-
-        closebutton.addEventListener("click", ()=>{
-            container.style.display = 'none';
-        })
-
-        const modal = document.createElement("div");
-        const titlelabel = document.createElement('p');
-        titlelabel.textContent = "Title:"
-        const title = document.createElement("input");
-        modal.append(titlelabel, title,closebutton);
-        container.append(modal);
-        document.body.append(container);
-    };
-    </script> -->
 </body>
 </html>
