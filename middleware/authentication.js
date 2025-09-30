@@ -93,9 +93,11 @@ exports.checkAdminPwd = async(req,res,next) => {
 
 exports.isAdmin = (req,res,next) => {
 
-    console.log(req.user, 'is the admincheck user');
     if ( req.user.is_admin === true){
         res.redirect("/dashboard")
+    }
+    else{
+        next();
     }
 
 }
