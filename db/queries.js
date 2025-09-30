@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 
 exports.emailExists = async(req,res,next) => {
     const email = req.body.email;
+    console.log('email exists?')
     try{
         const {rows} = await pool.query("Select * from users where username = $1",[email.toLowerCase()]);
         // console.log(rows, "is the query output")
@@ -55,7 +56,7 @@ exports.createMember = async(req,res,next) =>{
 }
 
 exports.signupErrorHandler = async(err,req,res,next) => {
-        // console.log(err, "is the err");
+        console.log(err, "is the err");
         res.render("signup", 
             {errors : Array.isArray(err) ? err : err, data:req.body });
 }
