@@ -37,6 +37,8 @@ userRouter.post("/signup",
     );
 
 
+userRouter.use(db.signupErrorHandler);
+
 userRouter.post("/login",
     passport.authenticate("local",
         {
@@ -48,6 +50,7 @@ userRouter.post("/login",
 
 
 userRouter.loginErrorHandler = (err,req,res,next) =>{
+    console.log("HERE!")
     res.render("login", {error : err.message});
 }
 

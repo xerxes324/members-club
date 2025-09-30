@@ -4,7 +4,9 @@ const pool = require("../db/pool");
 
 exports.initialize = (req,res,next) => {
     const errors = validationResult(req);
+    console.log(errors,'IOS THE ERRORSS');
     if ( !errors.isEmpty()){
+        console.log("PASSING IT TO HANDLER...");
         next(errors.array());
     }
     else{
