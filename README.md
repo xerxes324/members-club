@@ -2,6 +2,8 @@
 
 A simple Node.js/Express app with user authentication and member/admin access.
 
+## Live link : https://members-lounge-2.onrender.com/ 
+
 ## Tech Stack
 
 - Node.js, Express, EJS  
