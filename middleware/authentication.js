@@ -44,6 +44,7 @@ exports.validateEmail = [
     body('email')
     .trim()
     .notEmpty().withMessage("Please enter an email address.")
+    .matches(/^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/).withMessage("Please enter a valid email.")
     .isEmail().withMessage("Please enter a valid email address.")
     .normalizeEmail()
 ]
