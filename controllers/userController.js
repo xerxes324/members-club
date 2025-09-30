@@ -18,7 +18,7 @@ exports.dashboard = async(req,res) => {
 }
 
 exports.clubadmin = async(req,res,next) => {
-    res.render("clubadmin", {user: req.user});
+    res.render("clubAdmin", {user: req.user});
 }
 
 exports.fallback = async(req,res,next) => {
